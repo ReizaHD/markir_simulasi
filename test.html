@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <button id="startPredict" onclick="startPredict()">Start</button>
+  <button id="stopPredict" onclick="stopPredict()">Stop</button>
+  <button id="howX" onclick="howX()">X</button>
+</body>
+<script>
+  let isPredict = false;
+  let x = 0.0;
+  function startPredict(){
+    console.log("Halo");
+    isPredict = true;
+    predict();
+  }
+
+  function  stopPredict(){
+    console.log("pop")
+    isPredict = false;
+    predict();
+  }
+
+  async function predict(){
+    while (isPredict){
+      x = x + 0.000000001;
+      if(x >= 1.0){
+        console.log("HI");
+        x = 0.0;
+      }
+    }
+  }
+
+  function howX(){
+    console.log(x);
+  }
+</script>
+</html>
