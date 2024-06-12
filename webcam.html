@@ -1,0 +1,44 @@
+<html>
+<head>
+
+  <script src="js/webcam.js"></script>
+</head>
+<body>
+<div>
+  <div>
+    <video autoplay playsinline muted id="wc" width="200" height="200"></video>
+  </div>
+  <div>
+    <img id="capturedImage" alt="Captured Image"/>
+  </div>
+  <div>
+    <button type="button" id="2" onclick="captureNow()" >Scissors</button>
+  </div>
+</div>
+</body>
+
+<script>
+  const webcam = new Webcam(document.getElementById('wc'));
+  async function init(){
+    await webcam.setup();
+    const imageData = await webcam.captureWithoutTensorFlow();
+    console.log('Non-TensorFlow capture:', imageData);
+  }
+
+  async function captureNow(){
+    console.log("pressed");
+    const dataURL = await webcam.captureWithoutTensorFlow();
+    document.getElementById('capturedImage').src = dataURL;
+    // const link = document.createElement('a');
+    // link.href = dataURL;
+    // link.download = 'captured_image.png';
+    // document.body.appendChild(link);
+    // link.click();
+    // document.body.removeChild(link);
+  }
+
+
+  init();
+
+</script>
+</html>
